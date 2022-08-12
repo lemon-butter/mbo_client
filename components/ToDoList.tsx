@@ -27,6 +27,8 @@ const DELETE_TO_DO_LIST = gql`
 `;
 
 export default function ToDoList(props: any) {
+  console.log("props", props);
+
   const [thing, setThing] = useState("");
 
   const { data, loading, error } = useQuery(PART_LIST, {
@@ -98,6 +100,7 @@ export default function ToDoList(props: any) {
                 삭제
               </button>
             </div>
+            <br />
           </div>
         ))}
         <div>
