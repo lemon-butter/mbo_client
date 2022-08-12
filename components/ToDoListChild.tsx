@@ -89,20 +89,16 @@ function ToDoListChild(props: any) {
       <div key={toDoList.toDoListCode} className="bg-slate-300">
         {!edited ? (
           <>
-            <div className="w-[300px] inline-block">{toDoList.toDoThing}</div>
+            <div className="w-[300px] inline-block">할 일 : {toDoList.toDoThing}</div>
             <button onClick={changeEdit}>수정</button>
           </>
         ) : (
-          <div>
-            <div>
-              <input name="newToDoThing" onChange={onChange} value={newThing} data-key={toDoList.toDoListCode} />
-            </div>
-            <div>
-              <button onClick={changeText} data-key={toDoList.toDoListCode}>
-                저장
-              </button>
-            </div>
-          </div>
+          <>
+            <input className="w-[300px] inline-block" name="newToDoThing" onChange={onChange} value={newThing} data-key={toDoList.toDoListCode} />
+            <button onClick={changeText} data-key={toDoList.toDoListCode}>
+              저장
+            </button>
+          </>
         )}
         <button onClick={deleteToDoList} data-key={toDoList.toDoListCode}>
           삭제

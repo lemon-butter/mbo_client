@@ -135,25 +135,22 @@ function ObjectiveChild(props: any) {
     <div>
       <div key={objective.objectiveCode} className="bg-slate-700">
         {!edited ? (
-          <div>
-            <div>{objective.objectiveName}</div>
-            <div>
-              <button onClick={changeEdit}>수정</button> {/* 수정모드로 변경 */}
-            </div>
-          </div>
+          <>
+            <div className="w-[500px] inline-block">목표 : {objective.objectiveName}</div>
+            <button onClick={changeEdit}>수정</button>
+          </>
         ) : (
-          <div>
-            <div>
-              <input name="newOnjName" onChange={onChange} value={objName} data-key={objective.objectiveCode} />
-            </div>
-            <div>
-              <button onClick={changeText} data-key={objective.objectiveCode}>
-                저장
-              </button>
-              {/* 보기모드로 변경 */}
-            </div>
-          </div>
+          <>
+            <input className="w-[500px] inline-block" name="newOnjName" onChange={onChange} value={objName} data-key={objective.objectiveCode} />
+            <button onClick={changeText} data-key={objective.objectiveCode}>
+              저장
+            </button>
+          </>
         )}
+        <button>완료</button>
+        <button onClick={deleteObjective} data-key={objective.objectiveCode}>
+          삭제
+        </button>
         <div>
           <button onClick={onDecrease} data-key={objective.objectiveCode}>
             -
@@ -164,11 +161,6 @@ function ObjectiveChild(props: any) {
           </button>
         </div>
         <ToDoList value={objective.objectiveCode} />
-        <br />
-        <button>완료</button>
-        <button onClick={deleteObjective} data-key={objective.objectiveCode}>
-          삭제
-        </button>
         <br></br>
         <br></br>
         <br></br>
