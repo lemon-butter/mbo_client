@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ToDoList from "./ToDoList";
 
 const OBJECTIVES = gql`
@@ -152,7 +152,6 @@ function ObjectiveChild(props: any) {
               </button>
               {/* 보기모드로 변경 */}
             </div>
-            <b>값: {objName}</b>
           </div>
         )}
         <div>

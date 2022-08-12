@@ -1,5 +1,6 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
+import ToDoListChild from "./ToDoListChild";
 
 const PART_LIST = gql`
   query PartList($partListId: Int!) {
@@ -17,12 +18,6 @@ const ADD_TO_DO_LIST = gql`
       objectiveCode
       toDoThing
     }
-  }
-`;
-
-const DELETE_TO_DO_LIST = gql`
-  mutation RemoveToDoList($removeToDoListId: Int!) {
-    removeToDoList(id: $removeToDoListId)
   }
 `;
 
@@ -48,17 +43,6 @@ export default function ToDoList(props: any) {
     ],
   });
 
-  const [toDoListCode] = useMutation(DELETE_TO_DO_LIST, {
-    refetchQueries: [
-      {
-        query: PART_LIST,
-        variables: {
-          partListId: props.value,
-        },
-      },
-    ],
-  });
-
   function addThing(e: any) {
     addTodoThing({
       variables: {
@@ -69,15 +53,6 @@ export default function ToDoList(props: any) {
       },
     });
     setThing("");
-  }
-
-  function deleteToDoList(e: any) {
-    // console.log("e: ", e);
-    toDoListCode({
-      variables: {
-        removeToDoListId: parseInt(e.target.getAttribute("data-key")),
-      },
-    });
   }
 
   // 로딩중
@@ -92,16 +67,7 @@ export default function ToDoList(props: any) {
       <h2>할 일 목록이 여기에 쫘라락!</h2>
       <div>
         {data?.partList?.map((toDoList: any) => (
-          <div key={toDoList.toDoListCode}>
-            <div>{toDoList.toDoThing}</div>
-            <div>
-              <button>수정</button>
-              <button onClick={deleteToDoList} data-key={toDoList.toDoListCode}>
-                삭제
-              </button>
-            </div>
-            <br />
-          </div>
+          <ToDoListChild key={toDoList.toDoListCode} value={toDoList} />
         ))}
         <div>
           <label>할 일 추가!</label>

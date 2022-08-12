@@ -55,7 +55,7 @@ export default function Objective() {
         <br />
         <br />
         {data?.objectives?.map((objective: any) => (
-          <ObjectiveChild value={objective}></ObjectiveChild>
+          <ObjectiveChild key={objective.objectiveCode} value={objective} />
         ))}
       </div>
       <br></br>
