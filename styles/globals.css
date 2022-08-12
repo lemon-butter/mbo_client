@@ -2,29 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+html, body{height:100%; font-size:16px;}
+body{}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button{margin:0; padding:0; *margin:0; *padding:0; border:0; *border:0;}
+body,div,h1,h2,h3,h4,h5,th,td,input,p,select,button,ul,li,textarea{color:#202020; font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic',Dotum,Gulim,'Apple SD Gothic Neo',sans-serif, verdana; letter-spacing:-0.05em;}
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+.mobileContent{margin:0 auto; background: white; padding-bottom:60px;}
 
-* {
-  box-sizing: border-box;
-}
+input[type=password]{font-family: 'Noto Sans KR', AppleSDGothicNeo-Regular, 'Malgun Gothic',Dotum,Gulim,'Apple SD Gothic Neo',sans-serif, verdana;}
+input[type=button]{cursor: pointer;}
+body,th,td,input,select{font-size:16px; font-weight:normal; }
+img{border:0 none; vertical-align:middle;}
+form, fieldset {border:0 none;}
+table{border-collapse:collapse; border-spacing:0;}
+address, caption, em {font-weight:normal; font-style:normal;}
+ul,ol,li{list-style:none; overflow: hidden;}
+ol,li{display: inline-block;}
+img,input,select,textarea{vertical-align:middle;}
+acronym, abbr {cursor:help; letter-spacing:-0.05em; border-bottom:1px dotted #000; /* fix opera bug */}
+.skip, .hide {position:absolute; width:0; height:0; font-size:0; overflow:hidden; visibility:hidden;}
+.clear{clear:both;}
+button{ cursor: pointer; background: none; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
+/* anchor */
+a{cursor: pointer; color:#202020; text-decoration:none;}
+a:link {}
+a:visited {color:#202020;}
+a:hover{color:#3267e9;}
