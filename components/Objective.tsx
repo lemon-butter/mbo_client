@@ -50,7 +50,7 @@ export default function Objective() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div>
+    <div className="bg-slate-900">
       <div>
         <br />
         <br />

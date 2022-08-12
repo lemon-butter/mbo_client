@@ -31,6 +31,9 @@ function ToDoListChild(props: any) {
     refetchQueries: [
       {
         query: PART_LIST,
+        variables: {
+          partListId: toDoList.objectiveCode,
+        },
       },
     ],
   });
@@ -39,6 +42,9 @@ function ToDoListChild(props: any) {
     refetchQueries: [
       {
         query: PART_LIST,
+        variables: {
+          partListId: toDoList.objectiveCode,
+        },
       },
     ],
   });
@@ -80,14 +86,12 @@ function ToDoListChild(props: any) {
 
   return (
     <div>
-      <div key={toDoList.toDoListCode}>
+      <div key={toDoList.toDoListCode} className="bg-slate-300">
         {!edited ? (
-          <div>
-            <div>{toDoList.toDoThing}</div>
-            <div>
-              <button onClick={changeEdit}>수정</button>
-            </div>
-          </div>
+          <>
+            <div className="w-[300px] inline-block">{toDoList.toDoThing}</div>
+            <button onClick={changeEdit}>수정</button>
+          </>
         ) : (
           <div>
             <div>
@@ -105,6 +109,7 @@ function ToDoListChild(props: any) {
         </button>
         <br />
       </div>
+      <br />
     </div>
   );
 }

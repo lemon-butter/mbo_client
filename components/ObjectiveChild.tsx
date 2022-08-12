@@ -133,7 +133,7 @@ function ObjectiveChild(props: any) {
 
   return (
     <div>
-      <div key={objective.objectiveCode}>
+      <div key={objective.objectiveCode} className="bg-slate-700">
         {!edited ? (
           <div>
             <div>{objective.objectiveName}</div>

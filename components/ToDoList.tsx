@@ -62,8 +62,10 @@ export default function ToDoList(props: any) {
   // 에러
   if (error) return <p>Error :(</p>;
 
+  console.log("data3", data);
+
   return (
-    <div>
+    <div className="bg-slate-500">
       <h2>할 일 목록이 여기에 쫘라락!</h2>
       <div>
         {data?.partList?.map((toDoList: any) => (
