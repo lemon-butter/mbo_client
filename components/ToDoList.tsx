@@ -71,7 +71,7 @@ export default function ToDoList(props: any) {
 
   return (
     <div className="bg-slate-500">
-      <h2>할 일 목록이 여기에 쫘라락!</h2>
+      <h2>할 일 목록</h2>
       <div>
         {data?.partList?.map((toDoList: any) => (
           // map으로 받아오면 하위 항목을 감쌀 때 key값을 넣어줘야 에러가 안남
@@ -80,8 +80,8 @@ export default function ToDoList(props: any) {
         ))}
         <div>
           <label>할 일 추가!</label>
-          <input name="newToDoThing" onChange={(event) => setThing(event.target.value)} placeholder="새로운 할 일을 추가해주세요." value={thing} />
-          <button onClick={addThing} data-key={props.value}>
+          <input className="border-2 border-amber-400 rounded-lg w-[300px] ml-3" name="newToDoThing" onChange={(event) => setThing(event.target.value)} placeholder="새로운 할 일을 추가해주세요." value={thing} />
+          <button className="mx-3 text-sm bg-sky-800 p-0.5 rounded-lg" onClick={addThing} data-key={props.value}>
             추가
           </button>
         </div>

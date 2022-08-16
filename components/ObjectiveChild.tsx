@@ -13,6 +13,18 @@ const OBJECTIVES = gql`
   }
 `;
 
+// 해당 유저 목표 조회
+const SELECT_OBJECTIVES = gql`
+  query SelectObjectives($selectObjectivesId: Int!) {
+    selectObjectives(id: $selectObjectivesId) {
+      objectiveCode
+      userFlag
+      objectiveName
+      percentage
+    }
+  }
+`;
+
 // 목표 수정
 const UPDATE_OBJECTIVE = gql`
   mutation UpdateObjective($updateObjectNameInput: UpdateObjectNameInput!) {
@@ -51,7 +63,10 @@ function ObjectiveChild(props: any) {
     // 목표 수정 후 전체 목표 조회를 다시 호출(렌더링)
     refetchQueries: [
       {
-        query: OBJECTIVES,
+        query: SELECT_OBJECTIVES,
+        variables: {
+          selectObjectivesId: objective.userFlag,
+        },
       },
     ],
   });
@@ -61,7 +76,10 @@ function ObjectiveChild(props: any) {
     // 목표 삭제 후 전체 목표 조회를 다시 호출(렌더링)
     refetchQueries: [
       {
-        query: OBJECTIVES,
+        query: SELECT_OBJECTIVES,
+        variables: {
+          selectObjectivesId: objective.userFlag,
+        },
       },
     ],
   });
@@ -71,7 +89,10 @@ function ObjectiveChild(props: any) {
     // 진행률 +1 후 전체 목표 조회를 다시 호출(렌더링)
     refetchQueries: [
       {
-        query: OBJECTIVES,
+        query: SELECT_OBJECTIVES,
+        variables: {
+          selectObjectivesId: objective.userFlag,
+        },
       },
     ],
   });
@@ -81,7 +102,10 @@ function ObjectiveChild(props: any) {
     // 진행률 -1 후 전체 목표 조회를 다시 호출(렌더링)
     refetchQueries: [
       {
-        query: OBJECTIVES,
+        query: SELECT_OBJECTIVES,
+        variables: {
+          selectObjectivesId: objective.userFlag,
+        },
       },
     ],
   });
@@ -152,36 +176,40 @@ function ObjectiveChild(props: any) {
 
   return (
     <div>
-      <div key={objective.objectiveCode} className="bg-slate-700">
+      <div key={objective.objectiveCode} className="bg-slate-700 px-5">
         {!edited ? ( // flag값에 따라 text가 보이거나, input에 수정할 수 있도록 보여짐
           <>
-            <div className="w-[500px] inline-block">목표 : {objective.objectiveName}</div>
-            <button onClick={changeEdit}>수정</button>
+            <div className="w-[700px] inline-block text-2xl">목표 : {objective.objectiveName}</div>
+            <button className="mx-1.5 text-sm bg-orange-500 p-0.5 rounded-lg" onClick={changeEdit}>
+              수정
+            </button>
           </>
         ) : (
           <>
-            <input className="w-[500px] inline-block" name="newOnjName" onChange={onChange} value={objName} data-key={objective.objectiveCode} />
-            <button onClick={changeText} data-key={objective.objectiveCode}>
+            <input className="w-[700px] inline-block" name="newOnjName" onChange={onChange} value={objName} data-key={objective.objectiveCode} />
+            <button className="mx-1.5 text-sm bg-sky-800 p-0.5 rounded-lg" onClick={changeText} data-key={objective.objectiveCode}>
               저장
             </button>
           </>
         )}
-        <button>완료</button>
-        <button onClick={deleteObjective} data-key={objective.objectiveCode}>
+        <button className="mx-1.5 text-sm bg-red-800 p-0.5 rounded-lg" onClick={deleteObjective} data-key={objective.objectiveCode}>
           삭제
         </button>
-        <div>
-          <button onClick={onDecrease} data-key={objective.objectiveCode}>
-            -
+        <div className="flex mt-5 mb-5">
+          <button className="mx-3 bg-indigo-100" onClick={onDecrease} data-key={objective.objectiveCode}>
+            ➖
           </button>
-          <div>{objective.percentage}%</div>
-          <button onClick={onIncrease} data-key={objective.objectiveCode}>
-            +
+          <div className="w-[500px] bg-gray-200 rounded-full dark:bg-gray-500 h-[20px]">
+            <div className={"bg-blue-600 text-xs font-medium text-blue-100 text-center p-1 leading-none rounded-full h-[20px]"} style={{ width: objective.percentage + "%" }}>
+              {objective.percentage}%
+            </div>
+          </div>
+          <button className="mx-3 bg-indigo-100" onClick={onIncrease} data-key={objective.objectiveCode}>
+            ➕
           </button>
         </div>
         {/* 하위 컴포넌트에 value로 값을 전달해 준다. */}
         <ToDoList value={objective.objectiveCode} />
-        <br></br>
         <br></br>
         <br></br>
       </div>
