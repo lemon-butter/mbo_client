@@ -79,8 +79,6 @@ export default function Objective(props: any) {
   return (
     <div className="bg-slate-900">
       <div>
-        <br />
-        <br />
         {data?.selectObjectives?.map((objective: any) => (
           // map으로 받아오면 하위 항목을 감쌀 때 key값을 넣어줘야 에러가 안남
           // 하위 컴포넌트에 value로 값을 전달해 준다.

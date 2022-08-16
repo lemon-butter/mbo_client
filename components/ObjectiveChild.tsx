@@ -176,23 +176,23 @@ function ObjectiveChild(props: any) {
 
   return (
     <div>
-      <div key={objective.objectiveCode} className="bg-slate-700 px-5">
+      <div key={objective.objectiveCode} className="bg-slate-700 px-5 pt-3">
         {!edited ? ( // flag값에 따라 text가 보이거나, input에 수정할 수 있도록 보여짐
           <>
             <div className="w-[700px] inline-block text-2xl">목표 : {objective.objectiveName}</div>
-            <button className="mx-1.5 text-sm bg-orange-500 p-0.5 rounded-lg" onClick={changeEdit}>
+            <button className="float-right mx-1.5 text-sm bg-orange-500 p-0.5 rounded-lg" onClick={changeEdit}>
               수정
             </button>
           </>
         ) : (
           <>
             <input className="w-[700px] inline-block" name="newOnjName" onChange={onChange} value={objName} data-key={objective.objectiveCode} />
-            <button className="mx-1.5 text-sm bg-sky-800 p-0.5 rounded-lg" onClick={changeText} data-key={objective.objectiveCode}>
+            <button className="float-right mx-1.5 text-sm bg-sky-800 p-0.5 rounded-lg" onClick={changeText} data-key={objective.objectiveCode}>
               저장
             </button>
           </>
         )}
-        <button className="mx-1.5 text-sm bg-red-800 p-0.5 rounded-lg" onClick={deleteObjective} data-key={objective.objectiveCode}>
+        <button className="float-right mx-1.5 text-sm bg-red-800 p-0.5 rounded-lg" onClick={deleteObjective} data-key={objective.objectiveCode}>
           삭제
         </button>
         <div className="flex mt-5 mb-5">

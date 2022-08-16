@@ -106,19 +106,19 @@ function ToDoListChild(props: any) {
         {!edited ? ( // flag값에 따라 text가 보이거나, input에 수정할 수 있도록 보여짐
           <>
             <div className="w-[300px] inline-block text-stone-900">할 일 : {toDoList.toDoThing}</div>
-            <button className="mx-1.5 text-sm bg-orange-500 p-0.5 rounded-lg text-slate-600" onClick={changeEdit}>
+            <button className="float-right mx-1.5 text-sm bg-orange-500 p-0.5 rounded-lg text-slate-600" onClick={changeEdit}>
               수정
             </button>
           </>
         ) : (
           <>
             <input className="w-[300px] inline-block" name="newToDoThing" onChange={onChange} value={newThing} data-key={toDoList.toDoListCode} />
-            <button className=" mx-1.5 text-sm bg-sky-500 p-0.5 rounded-lg text-slate-600" onClick={changeText} data-key={toDoList.toDoListCode}>
+            <button className="float-right mx-1.5 text-sm bg-sky-500 p-0.5 rounded-lg text-slate-600" onClick={changeText} data-key={toDoList.toDoListCode}>
               저장
             </button>
           </>
         )}
-        <button className="mx-1.5 text-sm p-0.5 rounded-lg text-slate-600 bg-red-500" onClick={deleteToDoList} data-key={toDoList.toDoListCode}>
+        <button className="float-right mx-1.5 text-sm p-0.5 rounded-lg text-slate-600 bg-red-500" onClick={deleteToDoList} data-key={toDoList.toDoListCode}>
           삭제
         </button>
         <br />
